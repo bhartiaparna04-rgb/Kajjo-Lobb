@@ -2,219 +2,207 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kajal ❤️ Aparna</title>
+<title>My Kajjo 💜</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
   color: white;
+  text-align: center;
   overflow-x: hidden;
-}
-
-/* STARS */
-.star {
-  position: fixed;
-  width: 2px;
-  height: 2px;
-  background: white;
-  animation: twinkle 2s infinite alternate;
-}
-@keyframes twinkle {
-  from {opacity: 0.2;}
-  to {opacity: 1;}
 }
 
 /* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 40px 20px;
 }
 
-/* TYPE TEXT */
-.typing {
-  font-size: 22px;
-  border-right: 2px solid white;
-  white-space: nowrap;
-  overflow: hidden;
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 /* BUTTON */
 button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 25px;
+  padding: 10px 20px;
   border: none;
-  background: #ff4d6d;
-  color: white;
-  font-size: 16px;
-}
-
-/* SECRET */
-.secret {
-  display: none;
-  padding: 40px;
-  text-align: center;
-  font-size: 22px;
-  color: pink;
+  border-radius: 20px;
+  background: white;
+  color: #7b2cbf;
+  margin: 10px;
 }
 
 /* GALLERY */
 .gallery {
-  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+  padding: 15px;
 }
 .gallery img {
   width: 100%;
   border-radius: 15px;
-  transition: 0.3s;
-}
-.gallery img:hover {
-  transform: scale(1.05);
 }
 
-/* MODAL */
-.modal {
-  display: none;
+/* POPUP */
+.popup {
   position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
-.modal img {
-  max-width: 90%;
+.popup-box {
+  background:white;
+  color:#7b2cbf;
+  padding:20px;
+  border-radius:20px;
 }
 
-/* PASSWORD SCREEN */
-#lockScreen {
+/* FLOAT EMOJI */
+.float {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  bottom:-10px;
+  animation: floatUp 6s linear infinite;
 }
-input {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  margin-top: 10px;
+@keyframes floatUp {
+  to {transform: translateY(-100vh);}
+}
+
+/* HEART BURST */
+.burst {
+  position: fixed;
+  pointer-events: none;
+  animation: burstUp 1s ease-out forwards;
+}
+@keyframes burstUp {
+  0% {opacity:1; transform: scale(1);}
+  100% {opacity:0; transform: scale(2) translateY(-100px);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- PASSWORD -->
-<div id="lockScreen">
-  <h2>Enter Kajal's Nickname 💖</h2>
-  <input type="password" id="pass">
-  <button onclick="unlock()">Unlock 🔐</button>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="main" style="display:none;">
-
 <div class="hero">
-  <h1>Kajal ❤️</h1>
-  <div class="typing" id="text"></div>
-  <button onclick="showSecret()">Tap for Surprise 🎁</button>
-</div>
+  <h1>My Kajjo 💜</h1>
 
-<div class="secret" id="secret">
-  You are my only one Choice 💖 <br>
-  My Constant, My Puchhu, My Sukoon ❤️ <br><br>
-  I'm always with you… even in distance 💕 <br><br>
-  Happy Birthday in advance 🎂 <br>
-  I Love You Forever Kajal 💫 <br><br>
-  – Aparna ❤️
+  <div class="card">
+    <p>You are my only one choice, my Sukoon 💜</p>
+    <h2 id="countdown"></h2>
+  </div>
+
+  <button onclick="playMusic()">Play Our Song 🎵</button>
+  <button onclick="showPopup()">Open Surprise 🎁</button>
+
+  <p>yours Chiko 💜</p>
 </div>
 
 <!-- GALLERY -->
-<div class="gallery">
-  <img src="photo1.jpg" onclick="openImg(this.src)">
-  <img src="photo2.jpg" onclick="openImg(this.src)">
-  <img src="photo3.jpg" onclick="openImg(this.src)">
-  <img src="photo4.jpg" onclick="openImg(this.src)">
-  <img src="photo5.jpg" onclick="openImg(this.src)">
+<div class="card">
+  <h2>Our Moments 📸</h2>
+  <div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+    <img src="photo5.jpg">
+    <img src="photo6.jpg">
+    <img src="photo7.jpg">
+  </div>
 </div>
 
+<!-- LETTER -->
+<div class="card">
+  <h2>For You 💌</h2>
+  <p>
+    My Kajjo 💜 <br><br>
+    Tum meri life ka sabse beautiful part ho 🧸🐰 <br>
+    Door hoke bhi aap hamesha mere saath ho ❤️ <br><br>
+    I don't need anything else, bas aap ho 💜 <br><br>
+    Happy Birthday in advance meri jaan 🎂💜 <br>
+    Always yours, <br>
+    Chiko 💜
+  </p>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeImg()">
-  <img id="modalImg">
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2>🎂 Happy Birthday My Kajjo in Advance 💜</h2>
+    <p>You are my forever 🧸🐰</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
 </div>
 
-<!-- MUSIC -->
-<audio autoplay loop>
-  <source src="song.mp3" type="audio/mpeg">
+<audio id="music">
+  <source src="song.mp3">
 </audio>
 
 <script>
-// PASSWORD
-function unlock() {
-  let pass = document.getElementById("pass").value.toLowerCase();
-  if(pass === "puchhu") {
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("main").style.display = "block";
-  } else {
-    alert("Wrong password 😢");
+// MUSIC
+function playMusic(){
+  document.getElementById("music").play();
+}
+
+// POPUP
+function showPopup(){
+  document.getElementById("popup").style.display="flex";
+}
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+// FLOAT EMOJIS
+setInterval(()=>{
+  let el=document.createElement("div");
+  let e=["💜","🧸","🐰"];
+  el.innerHTML=e[Math.floor(Math.random()*e.length)];
+  el.className="float";
+  el.style.left=Math.random()*100+"vw";
+  el.style.fontSize=(20+Math.random()*15)+"px";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),6000);
+},500);
+
+// COUNTDOWN
+let bday=new Date("April 20, 2026").getTime();
+setInterval(()=>{
+  let now=new Date().getTime();
+  let d=Math.floor((bday-now)/(1000*60*60*24));
+  document.getElementById("countdown").innerHTML =
+  d+" days left 🎂💜";
+},1000);
+
+// AUTO POPUP
+setTimeout(()=>showPopup(),3000);
+
+// HEART BURST ON CLICK
+document.addEventListener("click", function(e){
+  for(let i=0;i<8;i++){
+    let el=document.createElement("div");
+    let emojis=["💜","💖","🧸","🐰"];
+    el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    el.className="burst";
+
+    el.style.left=e.clientX+"px";
+    el.style.top=e.clientY+"px";
+    el.style.fontSize=(20+Math.random()*20)+"px";
+
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),1000);
   }
-}
-
-// TYPING
-const message = "U are my only one Choice, My Sukoon ❤️";
-let i = 0;
-function typing() {
-  if(i < message.length){
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typing, 70);
-  }
-}
-typing();
-
-// SECRET
-function showSecret() {
-  document.getElementById("secret").style.display = "block";
-}
-
-// IMAGE MODAL
-function openImg(src) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = src;
-}
-function closeImg() {
-  document.getElementById("modal").style.display = "none";
-}
-
-// STARS
-for(let i=0;i<100;i++){
-  let star = document.createElement("div");
-  star.classList.add("star");
-  star.style.top = Math.random()*100+"vh";
-  star.style.left = Math.random()*100+"vw";
-  document.body.appendChild(star);
-}
-
-// POPUP MESSAGE
-setTimeout(()=>{
-  alert("I miss you Kajal ❤️");
-},5000);
+});
 </script>
 
 </body>
-</html><img src="photo6.jpg">
-<img src="photo7.jpg">
+</html>
