@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kajal ❤️ Aparna</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* STARS */
+.star {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: white;
+  animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle {
+  from {opacity: 0.2;}
+  to {opacity: 1;}
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TYPE TEXT */
+.typing {
+  font-size: 22px;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+}
+
+/* SECRET */
+.secret {
+  display: none;
+  padding: 40px;
+  text-align: center;
+  font-size: 22px;
+  color: pink;
+}
+
+/* GALLERY */
+.gallery {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+.modal img {
+  max-width: 90%;
+}
+
+/* PASSWORD SCREEN */
+#lockScreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lockScreen">
+  <h2>Enter Kajal's Nickname 💖</h2>
+  <input type="password" id="pass">
+  <button onclick="unlock()">Unlock 🔐</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main" style="display:none;">
+
+<div class="hero">
+  <h1>Kajal ❤️</h1>
+  <div class="typing" id="text"></div>
+  <button onclick="showSecret()">Tap for Surprise 🎁</button>
+</div>
+
+<div class="secret" id="secret">
+  You are my only one Choice 💖 <br>
+  My Constant, My Puchhu, My Sukoon ❤️ <br><br>
+  I'm always with you… even in distance 💕 <br><br>
+  Happy Birthday in advance 🎂 <br>
+  I Love You Forever Kajal 💫 <br><br>
+  – Aparna ❤️
+</div>
+
+<!-- GALLERY -->
+<div class="gallery">
+  <img src="photo1.jpg" onclick="openImg(this.src)">
+  <img src="photo2.jpg" onclick="openImg(this.src)">
+  <img src="photo3.jpg" onclick="openImg(this.src)">
+  <img src="photo4.jpg" onclick="openImg(this.src)">
+  <img src="photo5.jpg" onclick="openImg(this.src)">
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeImg()">
+  <img id="modalImg">
+</div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// PASSWORD
+function unlock() {
+  let pass = document.getElementById("pass").value.toLowerCase();
+  if(pass === "puchhu") {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  } else {
+    alert("Wrong password 😢");
+  }
+}
+
+// TYPING
+const message = "U are my only one Choice, My Sukoon ❤️";
+let i = 0;
+function typing() {
+  if(i < message.length){
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typing, 70);
+  }
+}
+typing();
+
+// SECRET
+function showSecret() {
+  document.getElementById("secret").style.display = "block";
+}
+
+// IMAGE MODAL
+function openImg(src) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalImg").src = src;
+}
+function closeImg() {
+  document.getElementById("modal").style.display = "none";
+}
+
+// STARS
+for(let i=0;i<100;i++){
+  let star = document.createElement("div");
+  star.classList.add("star");
+  star.style.top = Math.random()*100+"vh";
+  star.style.left = Math.random()*100+"vw";
+  document.body.appendChild(star);
+}
+
+// POPUP MESSAGE
+setTimeout(()=>{
+  alert("I miss you Kajal ❤️");
+},5000);
+</script>
+
+</body>
+</html><img src="photo6.jpg">
+<img src="photo7.jpg">
