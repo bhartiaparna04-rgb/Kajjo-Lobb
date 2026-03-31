@@ -1,115 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>My Kajjo 💜</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:linear-gradient(135deg,#a18cd1,#fbc2eb);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
 }
 
-/* HERO */
-.hero {
-  padding: 40px 20px;
+/* LOCK */
+.lock{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
 }
 
-.card {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  margin: 20px;
-  padding: 20px;
-  border-radius: 20px;
+/* MAIN */
+.main{display:none;padding:15px;}
+
+.card{
+  background:rgba(255,255,255,0.2);
+  padding:15px;
+  margin:15px;
+  border-radius:20px;
 }
 
 /* BUTTON */
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: white;
-  color: #7b2cbf;
-  margin: 10px;
+button{
+  padding:10px 15px;
+  border-radius:20px;
+  border:none;
+  margin:5px;
 }
 
 /* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 15px;
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
-.gallery img {
-  width: 100%;
-  border-radius: 15px;
+.gallery img{
+  width:100%;
+  border-radius:15px;
 }
 
 /* POPUP */
-.popup {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.7);
+.popup{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
   display:none;
   justify-content:center;
   align-items:center;
 }
-.popup-box {
+.popup-box{
   background:white;
   color:#7b2cbf;
   padding:20px;
   border-radius:20px;
 }
 
-/* FLOAT EMOJI */
-.float {
-  position: fixed;
-  bottom:-10px;
-  animation: floatUp 6s linear infinite;
+/* CONFETTI */
+.confetti{
+  position:fixed;
+  top:-10px;
+  animation:fall 3s linear forwards;
 }
-@keyframes floatUp {
-  to {transform: translateY(-100vh);}
+@keyframes fall{to{transform:translateY(100vh);}}
+
+/* TULIP */
+.tulip{
+  position:fixed;
+  bottom:0;
+  animation:up 6s linear infinite;
+}
+@keyframes up{to{transform:translateY(-100vh);}}
+
+/* FLOAT CUTE */
+.float{
+  position:fixed;
+  bottom:-10px;
+  animation:up 6s linear infinite;
 }
 
-/* HEART BURST */
-.burst {
-  position: fixed;
-  pointer-events: none;
-  animation: burstUp 1s ease-out forwards;
+/* HEART */
+.burst{
+  position:fixed;
+  animation:burstUp 1s forwards;
 }
-@keyframes burstUp {
-  0% {opacity:1; transform: scale(1);}
-  100% {opacity:0; transform: scale(2) translateY(-100px);}
+@keyframes burstUp{
+  to{transform:scale(2) translateY(-100px);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <h1>My Kajjo 💜</h1>
+<!-- PASSWORD -->
+<div class="lock" id="lock">
+  <h2>Enter Password 💜</h2>
+  <input type="password" id="pass">
+  <button onclick="check()">Open</button>
+</div>
 
-  <div class="card">
-    <p>You are my only one choice, my Sukoon 💜</p>
-    <h2 id="countdown"></h2>
-  </div>
+<!-- MAIN -->
+<div class="main" id="main">
 
-  <button onclick="playMusic()">Play Our Song 🎵</button>
-  <button onclick="showPopup()">Open Surprise 🎁</button>
+<h1>My Kajjo 💜</h1>
 
-  <p>yours Chiko 💜</p>
+<div class="card">
+  <h2 id="countdown"></h2>
+  <p>Aaj se birthday month start 💜🎂</p>
+</div>
+
+<!-- VIDEO -->
+<div class="card">
+  <h2>Our Video 🎥</h2>
+  <video id="vid" width="90%">
+    <source src="video.mp4">
+  </video><br>
+  <button onclick="toggleVideo()">Play / Pause Video</button>
+</div>
+
+<!-- MUSIC -->
+<div class="card">
+  <h2>Our Song 🎵</h2>
+  <button onclick="toggleMusic()">Play / Pause Music</button>
 </div>
 
 <!-- GALLERY -->
 <div class="card">
-  <h2>Our Moments 📸</h2>
+  <h2>Our Memories 📸</h2>
   <div class="gallery">
     <img src="photo1.jpg">
     <img src="photo2.jpg">
@@ -125,22 +158,33 @@ button {
 <div class="card">
   <h2>For You 💌</h2>
   <p>
-    My Kajjo 💜 <br><br>
-    Tum meri life ka sabse beautiful part ho 🧸🐰 <br>
-    Door hoke bhi aap hamesha mere saath ho ❤️ <br><br>
-    I don't need anything else, bas aap ho 💜 <br><br>
-    Happy Birthday in advance meri jaan 🎂💜 <br>
-    Always yours, <br>
-    Chiko 💜
+  My Kajjo 💜 <br><br>
+  Aap meri life ka sabse beautiful part ho 🧸🐰 <br>
+  I miss you & love you always 💜 <br><br>
+  Yours Chiko 💜
   </p>
 </div>
 
-<!-- POPUP -->
+</div>
+
+<!-- SPECIAL POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
-    <h2>🎂 Happy Birthday My Kajjo in Advance 💜</h2>
-    <p>You are my forever 🧸🐰</p>
+    <h2>💖 Special Surprise</h2>
+    <p>
+    Aaj se aapka birthday month start hai 💜 <br><br>
+    I'm so excited to celebrate your special day 🎂 <br><br>
+    Love you 💜
+    </p>
     <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<!-- AUTO LOVE POPUP -->
+<div class="popup" id="lovePopup">
+  <div class="popup-box">
+    <h2>💜</h2>
+    <p>I miss you ❤️<br>I love you 💜</p>
   </div>
 </div>
 
@@ -149,59 +193,99 @@ button {
 </audio>
 
 <script>
+// PASSWORD
+function check(){
+  if(document.getElementById("pass").value==="puchhu"){
+    lock.style.display="none";
+    main.style.display="block";
+    confetti();
+    showPopup();
+  } else alert("Wrong password 😏");
+}
+
+// CONFETTI
+function confetti(){
+  for(let i=0;i<40;i++){
+    let c=document.createElement("div");
+    c.innerHTML="🎉";
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+
+// VIDEO
+let v=false;
+function toggleVideo(){
+  let vid=document.getElementById("vid");
+  v?vid.pause():vid.play();
+  v=!v;
+}
+
 // MUSIC
-function playMusic(){
-  document.getElementById("music").play();
+let m=false;
+function toggleMusic(){
+  let music=document.getElementById("music");
+  m?music.pause():music.play();
+  m=!m;
 }
-
-// POPUP
-function showPopup(){
-  document.getElementById("popup").style.display="flex";
-}
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
-
-// FLOAT EMOJIS
-setInterval(()=>{
-  let el=document.createElement("div");
-  let e=["💜","🧸","🐰"];
-  el.innerHTML=e[Math.floor(Math.random()*e.length)];
-  el.className="float";
-  el.style.left=Math.random()*100+"vw";
-  el.style.fontSize=(20+Math.random()*15)+"px";
-  document.body.appendChild(el);
-  setTimeout(()=>el.remove(),6000);
-},500);
 
 // COUNTDOWN
 let bday=new Date("April 20, 2026").getTime();
 setInterval(()=>{
   let now=new Date().getTime();
   let d=Math.floor((bday-now)/(1000*60*60*24));
-  document.getElementById("countdown").innerHTML =
-  d+" days left 🎂💜";
+  countdown.innerHTML=d+" days left 🎂💜";
 },1000);
 
-// AUTO POPUP
-setTimeout(()=>showPopup(),3000);
+// TULIP
+setInterval(()=>{
+  let t=document.createElement("div");
+  t.innerHTML="🌷";
+  t.className="tulip";
+  t.style.left=Math.random()*100+"vw";
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),6000);
+},500);
 
-// HEART BURST ON CLICK
-document.addEventListener("click", function(e){
-  for(let i=0;i<8;i++){
+// FLOAT CUTE
+setInterval(()=>{
+  let e=["🧸","🐰","💜"];
+  let el=document.createElement("div");
+  el.innerHTML=e[Math.floor(Math.random()*e.length)];
+  el.className="float";
+  el.style.left=Math.random()*100+"vw";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),6000);
+},700);
+
+// HEART
+document.addEventListener("click",(e)=>{
+  for(let i=0;i<6;i++){
     let el=document.createElement("div");
-    let emojis=["💜","💖","🧸","🐰"];
-    el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    el.innerHTML=["💜","💖","🧸","🐰"][Math.floor(Math.random()*4)];
     el.className="burst";
-
     el.style.left=e.clientX+"px";
     el.style.top=e.clientY+"px";
-    el.style.fontSize=(20+Math.random()*20)+"px";
-
     document.body.appendChild(el);
     setTimeout(()=>el.remove(),1000);
   }
 });
+
+// POPUP
+function showPopup(){
+  popup.style.display="flex";
+}
+function closePopup(){
+  popup.style.display="none";
+}
+
+// AUTO LOVE POPUP
+setInterval(()=>{
+  lovePopup.style.display="flex";
+  setTimeout(()=>lovePopup.style.display="none",2000);
+},30000);
 </script>
 
 </body>
